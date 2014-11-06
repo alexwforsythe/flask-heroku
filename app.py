@@ -23,5 +23,11 @@ def hello(name=None):
     return render_template('hello.html', name=name)
 
 
+# Common
+@app.route('/<file_name>.txt')
+def send_text_file(file_name):
+    f = file_name + '.txt'
+    return app.send_static_file(f)
+
 if __name__ == '__main__':
     app.run(debug=True)
